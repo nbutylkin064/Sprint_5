@@ -1,4 +1,5 @@
-п»їclass TestData:
+# Sprint 5 autotests project
+class TestData:
     BASE_URL = "https://stellarburgers.education-services.ru/"
     EXISTING_EMAIL = "mine228lol@yandex.ru"
     EXISTING_PASSWORD = "Gfhjkm123"
@@ -24,9 +25,10 @@
     @staticmethod
     def generate_random_name():
         import random
-        names = ['РђР»РµРєСЃРµР№', 'РњР°СЂРёСЏ', 'Р”РјРёС‚СЂРёР№', 'РђРЅРЅР°', 'РЎРµСЂРіРµР№', 'Р•Р»РµРЅР°', 'РРІР°РЅ', 'РћР»СЊРіР°']
-        surnames = ['РРІР°РЅРѕРІ', 'РџРµС‚СЂРѕРІР°', 'РЎРёРґРѕСЂРѕРІ', 'РЎРјРёСЂРЅРѕРІР°', 'РљСѓР·РЅРµС†РѕРІ', 'РџРѕРїРѕРІР°']
+        names = ['Алексей', 'Мария', 'Дмитрий', 'Анна', 'Сергей', 'Елена', 'Иван', 'Ольга']
+        surnames = ['Иванов', 'Петрова', 'Сидоров', 'Смирнова', 'Кузнецов', 'Попова']
         return f"{random.choice(names)} {random.choice(surnames)}"
 
 class Urls:
     STELLAR_BURGERS_URL = "https://stellarburgers.education-services.ru/"
+

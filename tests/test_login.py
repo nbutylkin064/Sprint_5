@@ -1,68 +1,70 @@
-п»їfrom selenium.webdriver.support import expected_conditions as EC
+# Sprint 5 autotests project
+from selenium.webdriver.support import expected_conditions as EC
 from locators.locators import Locators
 
 class TestLogin:
     
     def test_login_via_main_page_button(self, driver, wait):
-        """Р’С…РѕРґ РїРѕ РєРЅРѕРїРєРµ В«Р’РѕР№С‚Рё РІ Р°РєРєР°СѓРЅС‚В» РЅР° РіР»Р°РІРЅРѕР№"""
+        """Вход по кнопке «Войти в аккаунт» на главной"""
         driver.find_element(*Locators.button_login_in_main).click()
         wait.until(EC.visibility_of_element_located(Locators.login_title))
         
-        # Р—Р°РїРѕР»РЅРµРЅРёРµ С„РѕСЂРјС‹ Р°РІС‚РѕСЂРёР·Р°С†РёРё
+        # Заполнение формы авторизации
         driver.find_element(*Locators.fields_email_auth).send_keys("mine228lol@yandex.ru")
         driver.find_element(*Locators.fields_password_auth).send_keys("Gfhjkm123")
         driver.find_element(*Locators.button_login).click()
         
-        # РџСЂРѕРІРµСЂРєР° СѓСЃРїРµС€РЅРѕРіРѕ РІС…РѕРґР°
+        # Проверка успешного входа
         wait.until(EC.visibility_of_element_located(Locators.button_make_the_order))
         assert driver.find_element(*Locators.button_make_the_order).is_displayed()
 
     def test_login_via_personal_account_button(self, driver, wait):
-        """Р’С…РѕРґ С‡РµСЂРµР· РєРЅРѕРїРєСѓ В«Р›РёС‡РЅС‹Р№ РєР°Р±РёРЅРµС‚В»"""
+        """Вход через кнопку «Личный кабинет»"""
         driver.find_element(*Locators.button_personal_account).click()
         wait.until(EC.visibility_of_element_located(Locators.login_title))
         
-        # Р—Р°РїРѕР»РЅРµРЅРёРµ С„РѕСЂРјС‹ Р°РІС‚РѕСЂРёР·Р°С†РёРё
+        # Заполнение формы авторизации
         driver.find_element(*Locators.fields_email_auth).send_keys("mine228lol@yandex.ru")
         driver.find_element(*Locators.fields_password_auth).send_keys("Gfhjkm123")
         driver.find_element(*Locators.button_login).click()
         
-        # РџСЂРѕРІРµСЂРєР° СѓСЃРїРµС€РЅРѕРіРѕ РІС…РѕРґР°
+        # Проверка успешного входа
         wait.until(EC.visibility_of_element_located(Locators.button_make_the_order))
         assert driver.find_element(*Locators.button_make_the_order).is_displayed()
 
     def test_login_via_registration_form(self, driver, wait):
-        """Р’С…РѕРґ С‡РµСЂРµР· РєРЅРѕРїРєСѓ РІ С„РѕСЂРјРµ СЂРµРіРёСЃС‚СЂР°С†РёРё"""
+        """Вход через кнопку в форме регистрации"""
         driver.find_element(*Locators.button_login_in_main).click()
         wait.until(EC.visibility_of_element_located(Locators.register_button_login))
         driver.find_element(*Locators.register_button_login).click()
         wait.until(EC.visibility_of_element_located(Locators.button_login_in_registration_form))
         driver.find_element(*Locators.button_login_in_registration_form).click()
         
-        # Р—Р°РїРѕР»РЅРµРЅРёРµ С„РѕСЂРјС‹ Р°РІС‚РѕСЂРёР·Р°С†РёРё
+        # Заполнение формы авторизации
         wait.until(EC.visibility_of_element_located(Locators.login_title))
         driver.find_element(*Locators.fields_email_auth).send_keys("mine228lol@yandex.ru")
         driver.find_element(*Locators.fields_password_auth).send_keys("Gfhjkm123")
         driver.find_element(*Locators.button_login).click()
         
-        # РџСЂРѕРІРµСЂРєР° СѓСЃРїРµС€РЅРѕРіРѕ РІС…РѕРґР°
+        # Проверка успешного входа
         wait.until(EC.visibility_of_element_located(Locators.button_make_the_order))
         assert driver.find_element(*Locators.button_make_the_order).is_displayed()
 
     def test_login_via_password_recovery_form(self, driver, wait):
-        """Р’С…РѕРґ С‡РµСЂРµР· РєРЅРѕРїРєСѓ РІ С„РѕСЂРјРµ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ РїР°СЂРѕР»СЏ"""
+        """Вход через кнопку в форме восстановления пароля"""
         driver.find_element(*Locators.button_personal_account).click()
         wait.until(EC.visibility_of_element_located(Locators.button_forgot_password))
         driver.find_element(*Locators.button_forgot_password).click()
         wait.until(EC.visibility_of_element_located(Locators.button_login_passwd_recovery_form))
         driver.find_element(*Locators.button_login_passwd_recovery_form).click()
         
-        # Р—Р°РїРѕР»РЅРµРЅРёРµ С„РѕСЂРјС‹ Р°РІС‚РѕСЂРёР·Р°С†РёРё
+        # Заполнение формы авторизации
         wait.until(EC.visibility_of_element_located(Locators.login_title))
         driver.find_element(*Locators.fields_email_auth).send_keys("mine228lol@yandex.ru")
         driver.find_element(*Locators.fields_password_auth).send_keys("Gfhjkm123")
         driver.find_element(*Locators.button_login).click()
         
-        # РџСЂРѕРІРµСЂРєР° СѓСЃРїРµС€РЅРѕРіРѕ РІС…РѕРґР°
+        # Проверка успешного входа
         wait.until(EC.visibility_of_element_located(Locators.button_make_the_order))
         assert driver.find_element(*Locators.button_make_the_order).is_displayed()
+

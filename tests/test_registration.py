@@ -1,4 +1,5 @@
-ï»¿import pytest
+# Sprint 5 autotests project
+import pytest
 from selenium.webdriver.support import expected_conditions as EC
 from locators.locators import Locators
 from data.test_data import TestData
@@ -6,47 +7,48 @@ from data.test_data import TestData
 class TestRegistration:
     
     def test_successful_registration(self, driver, wait):
-        """Ð£ÑÐ¿ÐµÑˆÐ½Ð°Ñ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ñ Ñ Ð²Ð°Ð»Ð¸Ð´Ð½Ñ‹Ð¼Ð¸ Ð´Ð°Ð½Ð½Ñ‹Ð¼Ð¸"""
-        # ÐŸÐµÑ€ÐµÑ…Ð¾Ð´ Ðº Ñ„Ð¾Ñ€Ð¼Ðµ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸
+        """Óñïåøíàÿ ðåãèñòðàöèÿ ñ âàëèäíûìè äàííûìè"""
+        # Ïåðåõîä ê ôîðìå ðåãèñòðàöèè
         driver.find_element(*Locators.button_login_in_main).click()
         wait.until(EC.visibility_of_element_located(Locators.register_button_login))
         driver.find_element(*Locators.register_button_login).click()
         
-        # Ð—Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ðµ Ñ„Ð¾Ñ€Ð¼Ñ‹
+        # Çàïîëíåíèå ôîðìû
         wait.until(EC.visibility_of_element_located(Locators.button_submit))
         driver.find_element(*Locators.fields_name).send_keys(TestData.generate_random_name())
         driver.find_element(*Locators.fields_email).send_keys(TestData.generate_random_email())
         driver.find_element(*Locators.fields_password).send_keys(TestData.generate_random_password(8))
         driver.find_element(*Locators.button_submit).click()
         
-        # ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° ÑƒÑÐ¿ÐµÑˆÐ½Ð¾Ð¹ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸ - Ð¿ÐµÑ€ÐµÑ…Ð¾Ð´ Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ Ð°Ð²Ñ‚Ð¾Ñ€Ð¸Ð·Ð°Ñ†Ð¸Ð¸ Ð˜Ð›Ð˜ Ð½Ð° Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ (ÐµÑÐ»Ð¸ Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¸Ð¹ Ð²Ñ…Ð¾Ð´)
+        # Ïðîâåðêà óñïåøíîé ðåãèñòðàöèè - ïåðåõîä íà ñòðàíèöó àâòîðèçàöèè ÈËÈ íà ãëàâíóþ (åñëè àâòîìàòè÷åñêèé âõîä)
         try:
-            # Ð–Ð´ÐµÐ¼ Ð»Ð¸Ð±Ð¾ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ Ð²Ñ…Ð¾Ð´Ð°, Ð»Ð¸Ð±Ð¾ Ð³Ð»Ð°Ð²Ð½ÑƒÑŽ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ (ÐºÐ½Ð¾Ð¿ÐºÑƒ "ÐžÑ„Ð¾Ñ€Ð¼Ð¸Ñ‚ÑŒ Ð·Ð°ÐºÐ°Ð·")
+            # Æäåì ëèáî ñòðàíèöó âõîäà, ëèáî ãëàâíóþ ñòðàíèöó (êíîïêó "Îôîðìèòü çàêàç")
             wait.until(EC.any_of(
                 EC.visibility_of_element_located(Locators.login_title),
                 EC.visibility_of_element_located(Locators.button_make_the_order)
             ))
-            # Ð•ÑÐ»Ð¸ Ñ…Ð¾Ñ‚Ñ Ð±Ñ‹ Ð¾Ð´Ð¸Ð½ Ð¸Ð· ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² Ð½Ð°Ð¹Ð´ÐµÐ½, ÑÑ‡Ð¸Ñ‚Ð°ÐµÐ¼ Ñ‚ÐµÑÑ‚ Ð¿Ñ€Ð¾Ð¹Ð´ÐµÐ½Ð½Ñ‹Ð¼
+            # Åñëè õîòÿ áû îäèí èç ýëåìåíòîâ íàéäåí, ñ÷èòàåì òåñò ïðîéäåííûì
             assert True
         except:
-            assert False, "ÐŸÐ¾ÑÐ»Ðµ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸ Ð½Ðµ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð·Ð¸Ð»Ð°ÑÑŒ Ð½Ð¸ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ð° Ð²Ñ…Ð¾Ð´Ð°, Ð½Ð¸ Ð³Ð»Ð°Ð²Ð½Ð°Ñ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ð°"
+            assert False, "Ïîñëå ðåãèñòðàöèè íå îòîáðàçèëàñü íè ñòðàíèöà âõîäà, íè ãëàâíàÿ ñòðàíèöà"
 
     @pytest.mark.parametrize("invalid_password", ["12345", "123", " "])
     def test_registration_with_invalid_password(self, driver, wait, invalid_password):
-        """ÐžÑˆÐ¸Ð±ÐºÐ° Ð¿Ñ€Ð¸ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸ Ñ Ð½ÐµÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð½Ñ‹Ð¼ Ð¿Ð°Ñ€Ð¾Ð»ÐµÐ¼"""
-        # ÐŸÐµÑ€ÐµÑ…Ð¾Ð´ Ðº Ñ„Ð¾Ñ€Ð¼Ðµ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸
+        """Îøèáêà ïðè ðåãèñòðàöèè ñ íåêîððåêòíûì ïàðîëåì"""
+        # Ïåðåõîä ê ôîðìå ðåãèñòðàöèè
         driver.find_element(*Locators.button_login_in_main).click()
         wait.until(EC.visibility_of_element_located(Locators.register_button_login))
         driver.find_element(*Locators.register_button_login).click()
         
-        # Ð—Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ðµ Ñ„Ð¾Ñ€Ð¼Ñ‹ Ñ Ð½ÐµÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð½Ñ‹Ð¼ Ð¿Ð°Ñ€Ð¾Ð»ÐµÐ¼
+        # Çàïîëíåíèå ôîðìû ñ íåêîððåêòíûì ïàðîëåì
         wait.until(EC.visibility_of_element_located(Locators.button_submit))
         driver.find_element(*Locators.fields_name).send_keys(TestData.generate_random_name())
         driver.find_element(*Locators.fields_email).send_keys(TestData.generate_random_email())
         driver.find_element(*Locators.fields_password).send_keys(invalid_password)
         driver.find_element(*Locators.button_submit).click()
         
-        # ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ð¾ÑˆÐ¸Ð±ÐºÐ¸
+        # Ïðîâåðêà îòîáðàæåíèÿ îøèáêè
         if len(invalid_password.strip()) > 0:
             wait.until(EC.visibility_of_element_located(Locators.incorrect_password))
             assert driver.find_element(*Locators.incorrect_password).is_displayed()
+

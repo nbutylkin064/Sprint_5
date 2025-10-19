@@ -1,39 +1,41 @@
-п»їfrom selenium.webdriver.support import expected_conditions as EC
+# Sprint 5 autotests project
+from selenium.webdriver.support import expected_conditions as EC
 from locators.locators import Locators
 
 class TestConstructor:
     
     def test_navigate_to_buns_section(self, driver, wait):
-        """РџРµСЂРµС…РѕРґ Рє СЂР°Р·РґРµР»Сѓ 'Р‘СѓР»РєРё'"""
-        # РЎРЅР°С‡Р°Р»Р° РїРµСЂРµС…РѕРґРёРј Рє РґСЂСѓРіРѕРјСѓ СЂР°Р·РґРµР»Сѓ
+        """Переход к разделу 'Булки'"""
+        # Сначала переходим к другому разделу
         wait.until(EC.visibility_of_element_located(Locators.sauces_block))
         driver.find_element(*Locators.sauces_block).click()
         
-        # Р—Р°С‚РµРј РІРѕР·РІСЂР°С‰Р°РµРјСЃСЏ Рє Р±СѓР»РєР°Рј
+        # Затем возвращаемся к булкам
         wait.until(EC.visibility_of_element_located(Locators.buns_block))
         driver.find_element(*Locators.buns_block).click()
         
-        # РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ СЂР°Р·РґРµР» Р°РєС‚РёРІРµРЅ
+        # Проверяем, что раздел активен
         wait.until(EC.visibility_of_element_located(Locators.current_section))
         current_section = driver.find_element(*Locators.current_section)
-        assert "Р‘СѓР»РєРё" in current_section.text
+        assert "Булки" in current_section.text
 
     def test_navigate_to_sauces_section(self, driver, wait):
-        """РџРµСЂРµС…РѕРґ Рє СЂР°Р·РґРµР»Сѓ 'РЎРѕСѓСЃС‹'"""
+        """Переход к разделу 'Соусы'"""
         wait.until(EC.visibility_of_element_located(Locators.sauces_block))
         driver.find_element(*Locators.sauces_block).click()
         
-        # РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ СЂР°Р·РґРµР» Р°РєС‚РёРІРµРЅ
+        # Проверяем, что раздел активен
         wait.until(EC.visibility_of_element_located(Locators.current_section))
         current_section = driver.find_element(*Locators.current_section)
-        assert "РЎРѕСѓСЃС‹" in current_section.text
+        assert "Соусы" in current_section.text
 
     def test_navigate_to_fillings_section(self, driver, wait):
-        """РџРµСЂРµС…РѕРґ Рє СЂР°Р·РґРµР»Сѓ 'РќР°С‡РёРЅРєРё'"""
+        """Переход к разделу 'Начинки'"""
         wait.until(EC.visibility_of_element_located(Locators.fillings_block))
         driver.find_element(*Locators.fillings_block).click()
         
-        # РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ СЂР°Р·РґРµР» Р°РєС‚РёРІРµРЅ
+        # Проверяем, что раздел активен
         wait.until(EC.visibility_of_element_located(Locators.current_section))
         current_section = driver.find_element(*Locators.current_section)
-        assert "РќР°С‡РёРЅРєРё" in current_section.text
+        assert "Начинки" in current_section.text
+
