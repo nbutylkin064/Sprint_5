@@ -16,7 +16,7 @@ conftest.py - файл с фикстурами
 locators.py - файл с локаторами элементов используемые в тестах
 data.py - файл с адресом сайта Stellar Burgers и валидными значениями аккаунта
 
-## Команды
+## Команды.
 Основа для написания автотестов — фреймворк pytest и инструмент Selenium WebDriver.
 Установить зависимости — pip install -r requirements.txt
 Установить pytest — pip install pytest
