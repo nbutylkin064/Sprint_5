@@ -1,43 +1,45 @@
-п»їfrom selenium.webdriver.common.by import By
+# Sprint 5 autotests project
+from selenium.webdriver.common.by import By
 
 class Locators:
-    # Р“Р»Р°РІРЅР°СЏ
-    button_login_in_main = (By.XPATH, './/button[text() = "Р’РѕР№С‚Рё РІ Р°РєРєР°СѓРЅС‚"]')     # РљРЅРѕРїРєР° "Р’РѕР№С‚Рё РІ Р°РєРєР°СѓРЅС‚" РЅР° РіР»Р°РІРЅРѕР№
-    register_button_login = (By.XPATH, '//a[text() = "Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ"]')       # РЎСЃС‹Р»РєР° "Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ" РІ РѕРєРЅРµ Р°РІС‚РѕСЂРёР·Р°С†РёРё
+    # Главная
+    button_login_in_main = (By.XPATH, './/button[text() = "Войти в аккаунт"]')     # Кнопка "Войти в аккаунт" на главной
+    register_button_login = (By.XPATH, '//a[text() = "Зарегистрироваться"]')       # Ссылка "Зарегистрироваться" в окне авторизации
 
-    # Р РµРіРёСЃС‚СЂР°С†РёСЏ Р°РєРєР°СѓРЅС‚Р°
-    fields_name = (By.XPATH, '//label[text()="РРјСЏ"]/following-sibling::input')     # РџРѕР»Рµ "РРјСЏ"
-    fields_email = (By.XPATH, './/label[text()="Email"]/following-sibling::input') # РџРѕР»Рµ Email
-    fields_password = (By.XPATH, './/input[@name="РџР°СЂРѕР»СЊ"]')                       # РџРѕР»Рµ "РџР°СЂРѕР»СЊ"
-    button_submit = (By.XPATH, '//button[text() = "Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ"]')          # РљРЅРѕРїРєР° "Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ"
-    incorrect_password = (By.XPATH, '//p[text() = "РќРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РїР°СЂРѕР»СЊ"]')         # РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ: РїР°СЂРѕР»СЊ РЅРµ РїСЂРѕС€РµР» РІР°Р»РёРґР°С†РёСЋ
+    # Регистрация аккаунта
+    fields_name = (By.XPATH, '//label[text()="Имя"]/following-sibling::input')     # Поле "Имя"
+    fields_email = (By.XPATH, './/label[text()="Email"]/following-sibling::input') # Поле Email
+    fields_password = (By.XPATH, './/input[@name="Пароль"]')                       # Поле "Пароль"
+    button_submit = (By.XPATH, '//button[text() = "Зарегистрироваться"]')          # Кнопка "Зарегистрироваться"
+    incorrect_password = (By.XPATH, '//p[text() = "Некорректный пароль"]')         # Сообщение об ошибке: пароль не прошел валидацию
 
-    # РђСѓС‚РµРЅС‚РёС„РёРєР°С†РёСЏ
-    login_title = (By.XPATH, '//h2[text()="Р’С…РѕРґ"]')                                # Р—Р°РіРѕР»РѕРІРѕРє СЃС‚СЂР°РЅРёС†С‹ "Р’С…РѕРґ"
-    fields_email_auth = (By.XPATH, '//label[text()="Email"]/following-sibling::input')  # РџРѕР»Рµ Email
-    fields_password_auth = (By.XPATH, '//input[@name = "РџР°СЂРѕР»СЊ"]')                 # РџРѕР»Рµ "РџР°СЂРѕР»СЊ"
-    button_login = (By.XPATH, '//button[text()="Р’РѕР№С‚Рё"]')                          # РљРЅРѕРїРєР° "Р’РѕР№С‚Рё"
-    button_personal_account = (By.XPATH, '//p[text() = "Р›РёС‡РЅС‹Р№ РљР°Р±РёРЅРµС‚"]')         # РљРЅРѕРїРєР° "Р›РёС‡РЅС‹Р№ РєР°Р±РёРЅРµС‚"
-    button_make_the_order = (By.XPATH, '//button[text()="РћС„РѕСЂРјРёС‚СЊ Р·Р°РєР°Р·"]')        # РљРЅРѕРїРєР° "РћС„РѕСЂРјРёС‚СЊ Р·Р°РєР°Р·"
-    button_login_in_registration_form = (By.XPATH, '//a[text() = "Р’РѕР№С‚Рё"]')        # РљРЅРѕРїРєР° "Р’РѕР№С‚Рё" РЅР° С„РѕСЂРјРµ СЂРµРіРёСЃС‚СЂР°С†РёРё
-    profile = (By.XPATH, '//a[@href = "/account/profile"]')                        # Р Р°Р·РґРµР» "РџСЂРѕС„РёР»СЊ"
+    # Аутентификация
+    login_title = (By.XPATH, '//h2[text()="Вход"]')                                # Заголовок страницы "Вход"
+    fields_email_auth = (By.XPATH, '//label[text()="Email"]/following-sibling::input')  # Поле Email
+    fields_password_auth = (By.XPATH, '//input[@name = "Пароль"]')                 # Поле "Пароль"
+    button_login = (By.XPATH, '//button[text()="Войти"]')                          # Кнопка "Войти"
+    button_personal_account = (By.XPATH, '//p[text() = "Личный Кабинет"]')         # Кнопка "Личный кабинет"
+    button_make_the_order = (By.XPATH, '//button[text()="Оформить заказ"]')        # Кнопка "Оформить заказ"
+    button_login_in_registration_form = (By.XPATH, '//a[text() = "Войти"]')        # Кнопка "Войти" на форме регистрации
+    profile = (By.XPATH, '//a[@href = "/account/profile"]')                        # Раздел "Профиль"
 
-    # Р’РѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РїР°СЂРѕР»СЏ
-    button_forgot_password = (By.XPATH, '//a[text() = "Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РїР°СЂРѕР»СЊ"]')     # РљРЅРѕРїРєР° "Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РїР°СЂРѕР»СЊ"
-    button_login_passwd_recovery_form = (By.XPATH, '//a[text() = "Р’РѕР№С‚Рё"]')        # РљРЅРѕРїРєР° "Р’РѕР№С‚Рё" РІ С„РѕСЂРјРµ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ РїР°СЂРѕР»СЏ
-    order_history = (By.XPATH, '//a[@href = "/account/order-history"]')            # Р Р°Р·РґРµР» "РСЃС‚РѕСЂРёСЏ Р·Р°РєР°Р·РѕРІ"
-    header_of_page_constructor = (By.XPATH, '//p[text() = "РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ"]')         # РљРЅРѕРїРєР° "РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ" РІ С€Р°РїРєРµ СЃР°Р№С‚Р°
-    logo_Stellar_Burgers = (By.XPATH, '//div[@class="AppHeader_header__logo__2D0X2"]')      # РљР»РёРєР°Р±РµР»СЊРЅС‹Р№ Р»РѕРіРѕС‚РёРї Stellar Burgers РІ С€Р°РїРєРµ СЃР°Р№С‚Р°
-    button_logout = (By.XPATH, '//button[@type = "button"]')                       # РљРЅРѕРїРєР° "Р’С‹Р№С‚Рё", Р»РѕРіР°СѓС‚
+    # Восстановление пароля
+    button_forgot_password = (By.XPATH, '//a[text() = "Восстановить пароль"]')     # Кнопка "Восстановить пароль"
+    button_login_passwd_recovery_form = (By.XPATH, '//a[text() = "Войти"]')        # Кнопка "Войти" в форме восстановления пароля
+    order_history = (By.XPATH, '//a[@href = "/account/order-history"]')            # Раздел "История заказов"
+    header_of_page_constructor = (By.XPATH, '//p[text() = "Конструктор"]')         # Кнопка "Конструктор" в шапке сайта
+    logo_Stellar_Burgers = (By.XPATH, '//div[@class="AppHeader_header__logo__2D0X2"]')      # Кликабельный логотип Stellar Burgers в шапке сайта
+    button_logout = (By.XPATH, '//button[@type = "button"]')                       # Кнопка "Выйти", логаут
 
-    # РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
-    buns_block = (By.XPATH, '//span[text()="Р‘СѓР»РєРё"]/parent::div')                  # Р—Р°РіРѕР»РѕРІРѕРє СЂР°Р·РґРµР»Р° "Р‘СѓР»РєРё" РІ РјРµРЅСЋ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
-    sauces_block = (By.XPATH, '//span[text()="РЎРѕСѓСЃС‹"]/parent::div')                # Р—Р°РіРѕР»РѕРІРѕРє СЂР°Р·РґРµР»Р° "РЎРѕСѓСЃС‹" РІ РјРµРЅСЋ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
-    fillings_block = (By.XPATH, '//span[text()="РќР°С‡РёРЅРєРё"]/parent::div')            # Р—Р°РіРѕР»РѕРІРѕРє СЂР°Р·РґРµР»Р° "РќР°С‡РёРЅРєРё" РІ РјРµРЅСЋ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
-    title_assemble_the_burger = (By.XPATH, ".//h1")                                # РќР°РґРїРёСЃСЊ, "РЎРѕР±РµСЂРёС‚Рµ Р±СѓСЂРіРµСЂ"
+    # Конструктор
+    buns_block = (By.XPATH, '//span[text()="Булки"]/parent::div')                  # Заголовок раздела "Булки" в меню конструктора
+    sauces_block = (By.XPATH, '//span[text()="Соусы"]/parent::div')                # Заголовок раздела "Соусы" в меню конструктора
+    fillings_block = (By.XPATH, '//span[text()="Начинки"]/parent::div')            # Заголовок раздела "Начинки" в меню конструктора
+    title_assemble_the_burger = (By.XPATH, ".//h1")                                # Надпись, "Соберите бургер"
 
-    current_section = (By.XPATH, "//div[contains(@class, 'tab_tab_type_current')]")  # РІС‹Р±СЂР°РЅРЅС‹Р№ СЂР°Р·РґРµР» РїРѕРјРµС‡РµРЅ tab_tab_type_current
+    current_section = (By.XPATH, "//div[contains(@class, 'tab_tab_type_current')]")  # выбранный раздел помечен tab_tab_type_current
 
-    proverka_sauces = (By.XPATH, './/*[text()="РЎРѕСѓСЃ Spicy-X"]')                      # РїРѕРёСЃРє РЅР°Р·РІР°РЅРёСЏ СЃРѕСѓСЃР° Spicy-X
-    proverka_buns = (By.XPATH, './/*[text()="Р¤Р»СЋРѕСЂРµСЃС†РµРЅС‚РЅР°СЏ Р±СѓР»РєР° R2-D3"]')          # РїРѕРёСЃРє РЅР°Р·РІР°РЅРёСЏ Р±СѓР»РєРё Р¤Р»СЋРѕСЂРµСЃС†РµРЅС‚РЅР°СЏ Р±СѓР»РєР° R2-D3
-    proverka_fillings = (By.XPATH, './/*[text()="РњСЏСЃРѕ Р±РµСЃСЃРјРµСЂС‚РЅС‹С… РјРѕР»Р»СЋСЃРєРѕРІ Protostomia"]')  # РїРѕРёСЃРє РЅР°Р·РІР°РЅРёСЏ РЅР°С‡РёРЅРєРё РњСЏСЃРѕ Р±РµСЃСЃРјРµСЂС‚РЅС‹С… РјРѕР»Р»СЋСЃРєРѕРІ Protostomia
+    proverka_sauces = (By.XPATH, './/*[text()="Соус Spicy-X"]')                      # поиск названия соуса Spicy-X
+    proverka_buns = (By.XPATH, './/*[text()="Флюоресцентная булка R2-D3"]')          # поиск названия булки Флюоресцентная булка R2-D3
+    proverka_fillings = (By.XPATH, './/*[text()="Мясо бессмертных моллюсков Protostomia"]')  # поиск названия начинки Мясо бессмертных моллюсков Protostomia
+

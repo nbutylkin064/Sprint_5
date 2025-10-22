@@ -1,10 +1,11 @@
-п»їfrom selenium.webdriver.support import expected_conditions as EC
+# Sprint 5 autotests project
+from selenium.webdriver.support import expected_conditions as EC
 from locators.locators import Locators
 
 class TestProfile:
     
     def login(self, driver, wait):
-        """Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Р№ РјРµС‚РѕРґ РґР»СЏ Р°РІС‚РѕСЂРёР·Р°С†РёРё"""
+        """Вспомогательный метод для авторизации"""
         driver.find_element(*Locators.button_personal_account).click()
         wait.until(EC.visibility_of_element_located(Locators.login_title))
         driver.find_element(*Locators.fields_email_auth).send_keys("mine228lol@yandex.ru")
@@ -13,14 +14,14 @@ class TestProfile:
         wait.until(EC.visibility_of_element_located(Locators.button_make_the_order))
 
     def test_navigate_to_personal_account(self, driver, wait):
-        """РџРµСЂРµС…РѕРґ РІ Р»РёС‡РЅС‹Р№ РєР°Р±РёРЅРµС‚"""
+        """Переход в личный кабинет"""
         self.login(driver, wait)
         driver.find_element(*Locators.button_personal_account).click()
         wait.until(EC.visibility_of_element_located(Locators.profile))
         assert driver.find_element(*Locators.profile).is_displayed()
 
     def test_navigate_from_profile_to_constructor_via_button(self, driver, wait):
-        """РџРµСЂРµС…РѕРґ РёР· Р»РёС‡РЅРѕРіРѕ РєР°Р±РёРЅРµС‚Р° РІ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ РєРЅРѕРїРєРµ"""
+        """Переход из личного кабинета в конструктор по кнопке"""
         self.login(driver, wait)
         driver.find_element(*Locators.button_personal_account).click()
         wait.until(EC.visibility_of_element_located(Locators.profile))
@@ -29,7 +30,7 @@ class TestProfile:
         assert driver.find_element(*Locators.button_make_the_order).is_displayed()
 
     def test_navigate_from_profile_to_constructor_via_logo(self, driver, wait):
-        """РџРµСЂРµС…РѕРґ РёР· Р»РёС‡РЅРѕРіРѕ РєР°Р±РёРЅРµС‚Р° РІ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ Р»РѕРіРѕС‚РёРїСѓ"""
+        """Переход из личного кабинета в конструктор по логотипу"""
         self.login(driver, wait)
         driver.find_element(*Locators.button_personal_account).click()
         wait.until(EC.visibility_of_element_located(Locators.profile))
@@ -38,10 +39,11 @@ class TestProfile:
         assert driver.find_element(*Locators.button_make_the_order).is_displayed()
 
     def test_logout(self, driver, wait):
-        """Р’С‹С…РѕРґ РёР· Р°РєРєР°СѓРЅС‚Р°"""
+        """Выход из аккаунта"""
         self.login(driver, wait)
         driver.find_element(*Locators.button_personal_account).click()
         wait.until(EC.visibility_of_element_located(Locators.button_logout))
         driver.find_element(*Locators.button_logout).click()
         wait.until(EC.visibility_of_element_located(Locators.login_title))
         assert driver.find_element(*Locators.login_title).is_displayed()
+

@@ -1,26 +1,27 @@
-п»їimport pytest
+# Sprint 5 autotests project
+import pytest
 import sys
 import os
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 
-# Р”РѕР±Р°РІР»СЏРµРј РєРѕСЂРЅРµРІСѓСЋ РґРёСЂРµРєС‚РѕСЂРёСЋ РІ РїСѓС‚СЊ Python
+# Добавляем корневую директорию в путь Python
 project_root = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, project_root)
 
 @pytest.fixture(scope='function')
 def driver():
-    # РќР°СЃС‚СЂРѕР№РєРё РґР»СЏ Chrome
+    # Настройки для Chrome
     chrome_options = Options()
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--disable-dev-shm-usage')
     chrome_options.add_argument('--window-size=1920,1080')
     
-    # РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РґСЂР°Р№РІРµСЂР° Chrome
+    # Инициализация драйвера Chrome
     driver = webdriver.Chrome(options=chrome_options)
     
-    # РЈРєР°Р·С‹РІР°РµРј URL РЅР°РїСЂСЏРјСѓСЋ
+    # Указываем URL напрямую
     driver.get('https://stellarburgers.education-services.ru/')
     
     yield driver
@@ -29,3 +30,4 @@ def driver():
 @pytest.fixture(scope='function')
 def wait(driver):
     return WebDriverWait(driver, 10)
+
